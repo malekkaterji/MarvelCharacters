@@ -7,10 +7,18 @@ import kotlinx.parcelize.Parcelize
 data class MarvelCharacter(
     val id: Int?,
     val name: String?,
-    val thumbnail: String?) : Parcelable
+    val thumbnailUrl: String?) : Parcelable
 
 fun Character.toMarvelCharacter() = MarvelCharacter(
     id = id,
     name = name,
-    thumbnail = thumbnail?.path
+    thumbnailUrl = getURL(thumbnail)
 )
+
+fun getURL(thumbnail: Image?): String? {
+    if(thumbnail != null && thumbnail.path != null && thumbnail.extension != null && thumbnail.path != "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"){
+        return (thumbnail.path + "." + thumbnail.extension).replace("http", "https")
+    } else{
+        return null
+    }
+}

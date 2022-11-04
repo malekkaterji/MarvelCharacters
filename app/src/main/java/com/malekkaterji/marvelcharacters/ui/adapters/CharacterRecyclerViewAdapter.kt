@@ -4,14 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.malekkaterji.marvelcharacters.ui.characters.detail.MarvelCharacterDetailFragment
 import com.malekkaterji.marvelcharacters.R
 import com.malekkaterji.marvelcharacters.databinding.CharacterListContentBinding
+import com.malekkaterji.marvelcharacters.loadImage
 import com.malekkaterji.marvelcharacters.models.MarvelCharacter
 
 class CharacterRecyclerViewAdapter(
@@ -30,8 +31,12 @@ class CharacterRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val character = characterList[position]
-        //holder.characterThumbnailImageView.setImageURI()
         holder.characterNameTextView.text = character.name
+        if(character.thumbnailUrl != null) {
+            holder.characterThumbnailImageView.loadImage(character.thumbnailUrl)
+        }else{
+            holder.characterThumbnailImageView.setImageResource(R.drawable.marvel_default_thumbnail)
+        }
 
         with(holder.itemView) {
             tag = character
@@ -66,7 +71,7 @@ class CharacterRecyclerViewAdapter(
 
     inner class ViewHolder(binding: CharacterListContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val characterThumbnailImageView: ImageView = binding.characterThumbnail
+        val characterThumbnailImageView: AppCompatImageView = binding.characterThumbnail
         val characterNameTextView: TextView = binding.characterName
     }
 

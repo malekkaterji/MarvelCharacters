@@ -13,8 +13,6 @@
         android:name="com.malekkaterji.marvelcharacters.ItemListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
         tools:context="com.malekkaterji.marvelcharacters.ui.characters.MarvelCharacterHostActivity"
         tools:listitem="@layout/character_list_content" />

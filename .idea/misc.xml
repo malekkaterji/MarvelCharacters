@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/user/AndroidStudioProjects/MarvelCharacters/app/src/main/res/drawable/gradient_foreground.xml" value="0.166" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MarvelCharacters/app/src/main/res/layout-sw600dp/fragment_character_detail.xml" value="0.19375" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MarvelCharacters/app/src/main/res/layout-sw600dp/fragment_character_list.xml" value="0.19375" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MarvelCharacters/app/src/main/res/layout-sw600dp/fragment_item_detail.xml" value="0.19375" />
