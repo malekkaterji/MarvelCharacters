@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.malekkaterji.marvelcharacters.R
 import com.malekkaterji.marvelcharacters.databinding.FragmentCharacterListBinding
 import com.malekkaterji.marvelcharacters.hide
 import com.malekkaterji.marvelcharacters.makeVisible
@@ -76,11 +78,20 @@ class MarvelCharacterListFragment : Fragment() {
                 }
                 is NetworkResult.Error -> {
                     doneLoading()
-                    Toast.makeText(
-                        requireContext(),
-                        response.message.toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    if(response.message?.lowercase().equals("unauthorized")){
+                        val builder = AlertDialog.Builder(requireContext())
+                        builder.setTitle("Oops")
+                        builder.setMessage("Did you forget to add api keys?")
+                        builder.setPositiveButton(R.string.maybe) { dialog, which ->
+                        }
+                        builder.show()
+                    }else{
+                        Toast.makeText(
+                            requireContext(),
+                            response.message.toString(),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
                 is NetworkResult.Loading -> {
                     showLoader()

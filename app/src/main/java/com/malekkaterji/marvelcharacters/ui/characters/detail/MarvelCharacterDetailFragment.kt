@@ -165,7 +165,6 @@ class MarvelCharacterDetailFragment : Fragment() {
                     }
                 }
                 if(marvelPublications.isNotEmpty()){
-                    // TODO support sw600dp
                     if(recyclerView != null){
                         recyclerView.adapter = PublicationRecyclerViewAdapter(
                             marvelPublications)

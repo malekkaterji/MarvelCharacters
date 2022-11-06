@@ -15,4 +15,7 @@
     <color name="marvel_blue">#518CCA</color>
     <color name="marvel_orange">#F78F3F</color>
 
+    <color name="marvel_red_80">#e64f4f</color>
+    <color name="marvel_red_5">#f1e7e7</color>
+
 </resources>
