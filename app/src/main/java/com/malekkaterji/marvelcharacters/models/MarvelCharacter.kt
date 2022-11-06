@@ -8,7 +8,7 @@ data class MarvelCharacter(
     val id: Int?,
     val name: String?,
     val description: String?,
-    val thumbnailUrl: String?) : Parcelable
+    val thumbnailUrl: String?) : Parcelable, MarvelListContent
 
 fun Character.toMarvelCharacter() = MarvelCharacter(
     id = id,

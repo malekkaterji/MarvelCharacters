@@ -20,11 +20,11 @@ class MarvelCharacterListViewModel @Inject constructor(
 
     var charactersResponse: MutableLiveData<NetworkResult<MarvelCharactersResponse>> = MutableLiveData()
 
-    fun getCharacters() = viewModelScope.launch{
+    fun getCharacters(offset: Int) = viewModelScope.launch{
         charactersResponse.value = NetworkResult.Loading()
 
         try {
-            val response = repository.remote.getCharacters()
+            val response = repository.remote.getCharacters(offset)
             charactersResponse.value = handleCharactersResponse(response)
         } catch (e: Exception) {
             e.printStackTrace()

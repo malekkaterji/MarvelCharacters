@@ -7,4 +7,5 @@
     <string name="character_series">Series</string>
     <string name="loading_publications">Loading %1$s</string>
     <string name="no_publications">There are currently no %1$s</string>
+    <string name="character_list_showing_count">Showing %1$d of %2$d characters</string>
 </resources>
