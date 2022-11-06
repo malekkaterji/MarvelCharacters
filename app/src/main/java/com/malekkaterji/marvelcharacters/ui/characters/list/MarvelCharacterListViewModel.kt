@@ -23,8 +23,13 @@ class MarvelCharacterListViewModel @Inject constructor(
     fun getCharacters() = viewModelScope.launch{
         charactersResponse.value = NetworkResult.Loading()
 
-        val response = repository.remote.getCharacters()
-        charactersResponse.value = handleCharactersResponse(response)
+        try {
+            val response = repository.remote.getCharacters()
+            charactersResponse.value = handleCharactersResponse(response)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            charactersResponse.value = NetworkResult.Error(e.message)
+        }
     }
 
     private fun handleCharactersResponse(response: Response<MarvelCharactersResponse>): NetworkResult<MarvelCharactersResponse> {

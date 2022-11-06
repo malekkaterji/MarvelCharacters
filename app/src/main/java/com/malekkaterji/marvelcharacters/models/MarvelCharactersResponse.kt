@@ -3,10 +3,10 @@ package com.malekkaterji.marvelcharacters.models
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
-typealias Comics = Category
-typealias Stories = Category
-typealias Events = Category
-typealias Series = Category
+typealias Comics = CharacterPublication
+typealias Stories = CharacterPublication
+typealias Events = CharacterPublication
+typealias Series = CharacterPublication
 
 @Keep
 data class MarvelCharactersResponse(
@@ -56,7 +56,7 @@ data class Image(
 )
 
 @Keep
-data class Category(
+data class CharacterPublication(
     @SerializedName("available") val available: Int?,
     @SerializedName("collectionURI") val collectionURI: String?,
     @SerializedName("items") val items: List<ItemSummary>?,

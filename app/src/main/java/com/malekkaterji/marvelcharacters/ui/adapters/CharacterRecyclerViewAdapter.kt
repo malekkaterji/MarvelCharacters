@@ -31,17 +31,21 @@ class CharacterRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val character = characterList[position]
+
+        // Character name
         holder.characterNameTextView.text = character.name
+
+        // Character thumbnail
         if(character.thumbnailUrl != null) {
             holder.characterThumbnailImageView.loadImage(character.thumbnailUrl)
         }else{
             holder.characterThumbnailImageView.setImageResource(R.drawable.marvel_default_thumbnail)
         }
 
+        // Set on click listener
         with(holder.itemView) {
             tag = character
             setOnClickListener { itemView ->
-                val item = itemView.tag as MarvelCharacter
                 val bundle = Bundle()
                 bundle.putParcelable(
                     MarvelCharacterDetailFragment.ARG_CHARACTER,
@@ -53,16 +57,6 @@ class CharacterRecyclerViewAdapter(
                 } else {
                     itemView.findNavController().navigate(R.id.show_character_detail, bundle)
                 }
-            }
-
-            setOnContextClickListener { v ->
-                val item = v.tag as MarvelCharacter
-                Toast.makeText(
-                    v.context,
-                    "Context click of item " + item.name,
-                    Toast.LENGTH_LONG
-                ).show()
-                true
             }
         }
     }

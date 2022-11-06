@@ -80,6 +80,8 @@ dependencies {
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.8'
 
+    // Lottie Animation
+    implementation 'com.airbnb.android:lottie:5.2.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

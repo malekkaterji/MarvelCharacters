@@ -7,7 +7,6 @@
     <fragment
         android:id="@+id/fragment_item_detail"
         android:name="com.malekkaterji.marvelcharacters.ui.characters.detail.MarvelCharacterDetailFragment"
-        android:label="@string/title_item_detail"
         tools:layout="@layout/fragment_character_detail">
         <argument
             android:name="item_id"

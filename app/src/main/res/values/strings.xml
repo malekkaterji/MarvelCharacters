@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Marvel Characters</string>
-    <string name="title_item_detail">Item Detail</string>
+    <string name="character_description">Description</string>
+    <string name="character_comics">Comics</string>
+    <string name="character_stories">Stories</string>
+    <string name="character_events">Events</string>
+    <string name="character_series">Series</string>
+    <string name="loading_publications">Loading %1$s</string>
+    <string name="no_publications">There are currently no %1$s</string>
 </resources>

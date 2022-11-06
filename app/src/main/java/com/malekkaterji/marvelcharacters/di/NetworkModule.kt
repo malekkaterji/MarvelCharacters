@@ -28,8 +28,8 @@ object NetworkModule {
         val timeStamp = Date().time.toString()
 
         return OkHttpClient.Builder()
-            .readTimeout(15, TimeUnit.SECONDS)
-            .connectTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .connectTimeout(30, TimeUnit.SECONDS)
             .addInterceptor{
                 var request = it.request()
                 val url: HttpUrl = request.url().newBuilder()

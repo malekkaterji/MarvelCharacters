@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.malekkaterji.marvelcharacters.R
 import com.malekkaterji.marvelcharacters.databinding.FragmentCharacterListBinding
+import com.malekkaterji.marvelcharacters.hide
+import com.malekkaterji.marvelcharacters.makeVisible
 import com.malekkaterji.marvelcharacters.models.MarvelCharacter
 import com.malekkaterji.marvelcharacters.models.MarvelCharactersResponse
 import com.malekkaterji.marvelcharacters.models.toMarvelCharacter
@@ -34,8 +36,8 @@ class MarvelCharacterListFragment : Fragment() {
             ViewModelProvider(requireActivity())[MarvelCharacterListViewModel::class.java]
 
         _binding = FragmentCharacterListBinding.inflate(inflater, container, false)
-        return binding.root
 
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,14 +50,14 @@ class MarvelCharacterListFragment : Fragment() {
         characterListViewModel.charactersResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is NetworkResult.Success -> {
-                    // TODO hide loader
+                    hideLoader()
                     response.data?.let {
                         populateList(it)
                         it.status?.let { it1 -> Log.d("", it1) }
                     }
                 }
                 is NetworkResult.Error -> {
-                    // TODO hide Loader - Handle errors
+                    hideLoader()
                     Toast.makeText(
                         requireContext(),
                         response.message.toString(),
@@ -63,12 +65,20 @@ class MarvelCharacterListFragment : Fragment() {
                     ).show()
                 }
                 is NetworkResult.Loading -> {
-                    // TODO show loader
+                    showLoader()
                 }
             }
         }
 
         characterListViewModel.getCharacters()
+    }
+
+    private fun hideLoader() {
+        binding.loader?.hide()
+    }
+
+    private fun showLoader() {
+        binding.loader?.makeVisible()
     }
 
     private fun populateList(charactersResponse: MarvelCharactersResponse) {

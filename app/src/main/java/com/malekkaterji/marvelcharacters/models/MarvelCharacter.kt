@@ -7,11 +7,13 @@ import kotlinx.parcelize.Parcelize
 data class MarvelCharacter(
     val id: Int?,
     val name: String?,
+    val description: String?,
     val thumbnailUrl: String?) : Parcelable
 
 fun Character.toMarvelCharacter() = MarvelCharacter(
     id = id,
     name = name,
+    description = description,
     thumbnailUrl = getURL(thumbnail)
 )
 
